@@ -18,20 +18,20 @@ upper = {
 
 u_key_list = list(upper.keys())
 
-SHIFT = 13
 LETTERS = 26
 
-message = input("Enter a string:")
+message = input("Enter the ciphertext: ")
+shift = int(input("Enter the shift amount: "))
 decoded = ''
 
 
 for character in message:
-  # calculate (charpos + 13) mod 26
+  # calculate (charpos - 13) mod 26
   if character in lower:
-    new_pos = (lower[character] + SHIFT) % LETTERS
+    new_pos = (lower[character] - shift) % LETTERS
     decoded = decoded + l_key_list[new_pos - 1]
   elif character in upper:
-    new_pos = (upper[character] + SHIFT) % LETTERS
+    new_pos = (upper[character] - shift) % LETTERS
     decoded = decoded + u_key_list[new_pos - 1]
   else:
     decoded = decoded + character
